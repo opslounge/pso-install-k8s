@@ -1,4 +1,4 @@
-# Jupyter-install
+# Install PSO 
 
 Install PSO CSI driver inside k8's cluster
 
