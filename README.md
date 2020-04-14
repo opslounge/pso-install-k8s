@@ -42,7 +42,7 @@ arrays:
       NfsEndPoint: "10.226.224.247"
 ```
 
-### Install
+### Install PSO
 Install PSO using the command below
 
 ```
