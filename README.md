@@ -10,7 +10,7 @@ Install PSO CSI driver inside k8's cluster
 - tiller account created
 - git installed
 
-### Install
+### Get PSO
 
 You need to add the helm chart for Pure Storage
 
@@ -42,7 +42,8 @@ arrays:
       NfsEndPoint: "10.226.224.247"
 ```
 
-You can install PSO using the command below
+### Install
+Install PSO using the command below
 
 ```
 helm install --name pure-storage-driver pure/pure-csi --namespace pureflash -f path-to/values.yaml
