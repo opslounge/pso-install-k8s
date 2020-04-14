@@ -12,7 +12,7 @@ Install PSO CSI driver inside k8's cluster
 
 ### Install
 
-You need to clone the repo from Pure Storage
+You need to add the helm chart for Pure Storage
 
 Add/update the helm repo for Pure
  
@@ -21,17 +21,13 @@ helm repo add pure https://purestorage.github.io/helm-charts
 helm repo update
 ```
 
-Clone the repo for PSO 
 
-```
-helm install --name pure-storage-driver pure/pure-csi --namespace pureflash -f path-to/values.yaml
-```
+Create a values file to configure your PSO installation. 
 
-
+You can download a sample by cloning the repo for [PSO](https://github.com/purestorage/helm-charts)
 
 browse to the pure-csi directory and edit the values.yaml to add your arrays
 
-more on PSO install options can be found here [PSO](https://github.com/purestorage/helm-charts)
 
 ```
 # provisioner. An example is shown below:
@@ -108,6 +104,45 @@ pure-csi  0s
 ```
 
 Installed successfully
+
+
+##########################
+
+worker node network config 
+
+```
+[root@knode04 ~]# ifconfig -s
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+cali024e51bbd07  1480  4626365      0     60 0        366465      0      0      0 BMRU
+cali0b1ba833b45  1480    52475      0     45 0            85      0      0      0 BMRU
+cali29715c001b8  1480  4626365      0     60 0        366465      0      0      0 BMRU
+cali36d72db93d8  1480  4626365      0     60 0        366465      0      0      0 BMRU
+cali56cbf5b9371  1480  4626365      0     60 0        366465      0      0      0 BMRU
+cali7987bda2083  1480    52475      0     45 0            85      0      0      0 BMRU
+cali84b0ff3a62d  1480  4626365      0     60 0        366465      0      0      0 BMRU
+cali9d8bde2b569  1480  4626365      0     60 0        366465      0      0      0 BMRU
+calib5c9f472904  1480  4626365      0     60 0        366465      0      0      0 BMRU
+calic0c0932cdcf  1480  9735981      0    355 0       7937587      0      0      0 BMRU
+calic3a9fe3f3ca  1480    52475      0     45 0            85      0      0      0 BMRU
+calic5079a5922d  1480    52475      0     45 0            85      0      0      0 BMRU
+calic7dfa7b2543  1480  9735981      0    355 0       7937587      0      0      0 BMRU
+calid8458403ced  1480        0      0      0 0             0      0      0      0 BMRU
+calid8a8730495f  1480        0      0      0 0             0      0      0      0 BMRU
+calif158eb81a71  1480  9735981      0    355 0       7937587      0      0      0 BMRU
+ens192           1500  9735981      0    355 0       7937587      0      0      0 BMRU
+ens224           1500  4626365      0     60 0        366465      0      0      0 BMRU
+lo              65536   553112      0      0 0        553112      0      0      0 LRU
+tunl0            1480  4535227      0      0 0       4390215      0      0      0 ORU
+
+```
+TYPE=Ethernet
+BOOTPROTO=static
+NAME=ens224
+DEVICE=ens224
+ONBOOT=yes
+IPADDR=192.168.170.234
+PREFIX=24
+```
 
 
 
